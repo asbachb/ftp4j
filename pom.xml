@@ -8,6 +8,17 @@
     <groupId>it.sauronsoftware.ftp4j</groupId>
     <version>1.7.2-SNAPSHOT</version>
 
+    <developers>
+        <developer>
+            <name>Carlo Pelliccia</name>
+            <url>www.sauronsoftware.it</url>
+        </developer>
+        <developer>
+            <name>Benjamin Asbach</name>
+            <url>http://www.asbach-it.de</url>
+        </developer>
+    </developers>
+
     <profiles>
         <profile>
             <id>release</id>
