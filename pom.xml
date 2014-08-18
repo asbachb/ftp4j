@@ -8,6 +8,17 @@
     <groupId>it.sauronsoftware.ftp4j</groupId>
     <version>1.7.2-SNAPSHOT</version>
 
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.4</maven.compiler.source>
+        <maven.compiler.target>1.4</maven.compiler.target>
+    </properties>
+
+    <scm>
+        <connection>scm:git:https://github.com/asbachb/ftp4j.git</connection>
+        <tag>HEAD</tag>
+    </scm>
+
     <developers>
         <developer>
             <name>Carlo Pelliccia</name>
