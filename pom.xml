@@ -4,7 +4,7 @@
 
     <artifactId>ftp4j</artifactId>
     <groupId>it.sauronsoftware.ftp4j</groupId>
-    <version>1.7.2</version>
+    <version>0-SNAPSHOT</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -14,7 +14,7 @@
 
     <scm>
         <connection>scm:git:https://github.com/asbachb/ftp4j.git</connection>
-        <tag>1.7.2</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <developers>
