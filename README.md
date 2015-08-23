@@ -11,6 +11,14 @@ The artefacts are also published via github pseudo maven repository. So if you w
             <url>https://raw.github.com/asbachb/mvn-repo/master/releases</url>
         </repository>
     </repositories>
+    
+To add ftp4j as dependency just add following declaration to your pom.xml
+
+    <dependency>
+        <groupId>it.sauronsoftware.ftp4j</groupId>
+        <artifactId>ftp4j</artifactId>
+        <version>1.7.2</version>
+    </dependency>
 
 original source from
 * http://www.sauronsoftware.it/projects/ftp4j/
