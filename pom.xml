@@ -3,7 +3,7 @@
     <name>ftp4j</name>
 
     <artifactId>ftp4j</artifactId>
-    <groupId>it.sauronsoftware.ftp4j</groupId>
+    <groupId>com.github.asbachb</groupId>
     <version>0-SNAPSHOT</version>
 
     <properties>
