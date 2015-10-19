@@ -42,12 +42,12 @@ public class MLSDListParser implements FTPListParser {
 	/**
 	 * Date format 1 for MLSD date facts (supports millis).
 	 */
-	private static final DateFormat MLSD_DATE_FORMAT_1 = new SimpleDateFormat("yyyyMMddhhmmss.SSS Z");
+	private static final DateFormat MLSD_DATE_FORMAT_1 = new SimpleDateFormat("yyyyMMddHHmmss.SSS Z");
 
 	/**
 	 * Date format 2 for MLSD date facts (doesn't support millis).
 	 */
-	private static final DateFormat MLSD_DATE_FORMAT_2 = new SimpleDateFormat("yyyyMMddhhmmss Z");
+	private static final DateFormat MLSD_DATE_FORMAT_2 = new SimpleDateFormat("yyyyMMddHHmmss Z");
 
 	public FTPFile[] parse(String[] lines) throws FTPListParseException {
 		ArrayList list = new ArrayList();
@@ -75,20 +75,35 @@ public class MLSDListParser implements FTPListParser {
 	 *             If the line is not a valid MLSD entry.
 	 */
 	private FTPFile parseLine(String line) throws FTPListParseException {
-		// Divides facts and name.
+		// According to Extensions to FTP RFC 3659, the file name in a MLSD list response line come after the first space in the line  : https://tools.ietf.org/html/rfc3659
+		// List line format is <FACTS WITH NO SPACES SEPARATED WITH SEMICOLON> <SPACE> <FILENAME>
+		// Example of line that failed before: Type=file;Size=25730;Modify=19940728095854;Perm=; cap;mux.tar.z
+		int nameIndex = line.indexOf(" ");
+
+		// Throw exception if no name in response line
+		if (nameIndex == -1) {
+			throw new FTPListParseException();
+		}
+
+		// Extract the file name.
+		String name = line.substring(nameIndex + 1);
+
+		// Extract the facts string
+		String factsLine = line.substring(0, nameIndex);
 		ArrayList list = new ArrayList();
-		StringTokenizer st = new StringTokenizer(line, ";");
+		StringTokenizer st = new StringTokenizer(factsLine, ";");
 		while (st.hasMoreElements()) {
 			String aux = st.nextToken().trim();
 			if (aux.length() > 0) {
 				list.add(aux);
 			}
 		}
+
+		// If no facts, throw exception
 		if (list.size() == 0) {
 			throw new FTPListParseException();
 		}
-		// Extracts the file name.
-		String name = (String) list.remove(list.size() - 1);
+
 		// Parses the facts.
 		Properties facts = new Properties();
 		for (Iterator i = list.iterator(); i.hasNext();) {
