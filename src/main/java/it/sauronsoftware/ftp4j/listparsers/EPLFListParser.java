@@ -96,14 +96,4 @@ public class EPLFListParser implements FTPListParser {
 		}
 		return ret;
 	}
-
-	public static void main(String[] args) throws Throwable {
-		String[] test = { "+i8388621.29609,m824255902,/,\tdev",
-				"+i8388621.44468,m839956783,r,s10376,\tRFCEPLF" };
-		EPLFListParser parser = new EPLFListParser();
-		FTPFile[] f = parser.parse(test);
-		for (int i = 0; i < f.length; i++) {
-			System.out.println(f[i]);
-		}
-	}
 }
