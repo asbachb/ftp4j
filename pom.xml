@@ -12,9 +12,11 @@
         <maven.compiler.target>1.5</maven.compiler.target>
     </properties>
 
+    <url>https://github.com/asbachb/ftp4j</url>
     <scm>
-        <connection>scm:git:https://github.com/asbachb/ftp4j.git</connection>
+        <connection>scm:git:git@github.com:asbachb/ftp4j.git</connection>
         <tag>HEAD</tag>
+        <url>https://github.com/asbachb/ftp4j</url>
     </scm>
 
     <developers>
